@@ -1,28 +1,16 @@
-class Suite:
-    def __init__(self, h):
-        self.suite = 2 * h + 0.3
+# Второе задание
+class MyException(Exception):
+    def __init__(self, text):
+        self.text = text
 
+while True:
+    inputt = list(map(lambda x: int(x), input("Введите делимое и делитель через пробел: ").split()))
+    try:
+        if inputt[1] == 0:
+            raise MyException("Вы ввели ноль в делителе! Попробуйте ввести другое число")
+        print(inputt[0]/inputt[1])
+        break
+    except MyException as err:
+        print(err)
 
-class Coat:
-    def __init__(self, v):
-        self.coat = v / 6.5 + 0.5
-
-
-class Clothes:
-    def __init__(self, name):
-        self.name = name
-        self.lis = list()
-
-    def list_append(self, h=0, v=0):
-        self.lis.append(Suite(h).suite)
-        self.lis.append(Coat(v).coat)
-
-    def summ(self):
-        return sum(self.lis)
-
-
-a = Clothes("Пальто+Костюм")
-a.list_append(2, 3)
-a.list_append(2, 3)
-a.list_append(2, 3)
-print(a.summ())
+    
